@@ -3,6 +3,8 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { StatusBar, ScrollView, View, Text, TextInput } from "react-native";
 import * as Icon from "react-native-feather";
 import Categorias from "@/components/categorias";
+import Features from "@/components/features";
+import { featured } from "@/constants/categorias";
 
 export default function HomeScreen() {
   return (
@@ -33,6 +35,21 @@ export default function HomeScreen() {
       >
         {/*Categorias*/}
         <Categorias/>
+        {/*Featured*/}
+        <View className="mt-5">
+          {
+            featured.map((item,index)=>{
+              return(
+                <Features
+                key={index}
+                title={item.title}
+                restaurants={item.restaurants}
+                descripcion={item.description}
+                />
+              )
+            })
+          }
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
