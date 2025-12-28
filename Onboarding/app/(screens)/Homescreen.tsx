@@ -6,7 +6,7 @@ export default function Homescreen() {
   return (
     <SafeAreaView className='mt-1'>
         <StatusBar barStyle={"dark-content"}/>
-        <Text>Homescreen</Text>
+        <Text>Prosti el q lo lea</Text>
     </SafeAreaView>
   )
 }
