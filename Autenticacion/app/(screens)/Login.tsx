@@ -50,12 +50,12 @@ export default function Login() {
                 Olvidé mi contraseña
               </Text>
             </TouchableOpacity>
-            <TouchableOpacity className="bg-yellow-500 py-3 mt-5 items-center rounded-2xl">
+            <TouchableOpacity className="bg-yellow-500 py-4 mt-5 items-center rounded-2xl">
               <Text className="text-xl text-black font-bold">
                 Iniciar sesion
               </Text>
             </TouchableOpacity>
-            <View className="flex-row justify-center mt-7">
+            <View className="flex-row justify-center mt-10">
               <Text className="text-gray-500 font-semibold">¿No tienes una cuenta? </Text>
               <TouchableOpacity onPress={ ()=> router.push("/(screens)/Singup")}>
                 <Text className="text-yellow-500 font-semibold">Create una cuenta</Text>

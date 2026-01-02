@@ -51,7 +51,7 @@ export default function Singup() {
             secureTextEntry
             placeholder="Escribe tu contraseña"
           />
-          <TouchableOpacity className="bg-yellow-500 py-3 mt-5 items-center rounded-2xl">
+          <TouchableOpacity className="bg-yellow-500 py-4 mt-10 items-center rounded-2xl">
             <Text className="text-xl text-black font-bold">Crear cuenta</Text>
           </TouchableOpacity>
           <View className="flex-row justify-center mt-7">
