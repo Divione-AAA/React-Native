@@ -3,8 +3,9 @@ import { View } from "react-native";
 
 export default function RootLayout() {
   return (
-    <Stack screenOptions={{ headerShown: false }}>
-      <Stack.Screen name="Onboarding" />
+    <Stack screenOptions={{ headerShown: false }} initialRouteName="(screens)/Onboarding">
+      <Stack.Screen name="(screens)/Onboarding" />
+      <Stack.Screen name="(screens)/Homescreen" />
     </Stack>
   );
 }
