@@ -1,69 +1,216 @@
-# Expo NativeWind Template
+# expo-nativewind-template -- Expo + React Native + NativeWind Starter
 
-## An Opinionated Way to Build a React Native App
+This project is a customized Expo React Native app, based on the default Expo template with expo-router (file-based routing and tabs) and preconfigured with NativeWind + TailwindCSS for utility-first styling.
 
-The **Expo NativeWind Template** is designed to provide you with a fast and efficient starting point for building React Native applications. This template follows a set of opinions to streamline your development process and ensure consistency across mobile and web platforms.
+It can be used as a starter template for new React Native projects that need:
 
-### Features
+- Expo Router (file-based routing with layouts, nested routes, and tabs)
+- NativeWind (TailwindCSS for React Native styling)
+- Metro bundler configured to work with Tailwind
+- TypeScript setup out of the box
+- Dark mode support (via Expo useColorScheme)
 
-- **Tailwind CSS for Styling**: Tailwind CSS is a highly customizable and utility-first CSS framework. With this template, you can easily style your components using Tailwind classes, making your UI development faster and more consistent.
+---
 
-- **Expo-Router for Navigation**: Expo-Router simplifies navigation in your React Native app. It provides a straightforward way to manage your app's routing, ensuring smooth transitions between screens.
+## Features
 
-- **Mobile and Web Compatibility**: This template is optimized for both mobile and web platforms. You can develop and test your app on multiple devices, including web browsers, without major modifications.
+- React Native + Expo -- managed workflow
+- expo-router -- file-based navigation
+  - app/\_layout.tsx --> root layout
+  - app/(tabs)/\_layout.tsx --> tab navigation
+- NativeWind (TailwindCSS) -- preconfigured for styling
+  - global.css included and imported in root layout
+  - tailwind.config.js with NativeWind preset
+  - babel.config.js + metro.config.js updated
+- TypeScript support with typed routes
+- Dark/light theme support
 
-### Getting Started
+---
 
-To create a new project using this template, follow these steps:
+## Prerequisites
 
-1. Open your terminal.
+- Node.js 18 or 20 (LTS recommended)
+- Expo CLI (npx expo)
+- Expo Go app installed on a physical device
 
-2. Run the following command to create a new Expo project based on this template:
+---
+
+## Getting Started
+
+Clone this repo and install dependencies (if you are not using the GitHub template flow yet):
+
+```bash
+git clone https://github.com/johnmchale/expo-nativewind-template
+cd expo-nativewind-template
+npm install
+```
+
+Start the Expo development server:
+
+```bash
+npx expo start -c
+```
+
+Scan the QR code with the Expo Go app (iOS or Android) to preview the app.
+
+---
+
+## Development Notes
+
+- The default template tabs are set up in app/(tabs)/, but the example index.tsx has been replaced with a NativeWind test screen. The tab bar may not be visible until you restore the default content.
+- To restore the default tabs screen, replace the content of app/(tabs)/index.tsx with your preferred layout or the original example.
+
+---
+
+## File Highlights
+
+- app/\_layout.tsx --> root layout, imports global.css
+- app/(tabs)/\_layout.tsx --> bottom tab navigator
+- global.css --> Tailwind entry point
+- tailwind.config.js --> Tailwind + NativeWind config
+- babel.config.js --> includes NativeWind preset
+- metro.config.js --> wires Tailwind into Metro bundler
+- nativewind-env.d.ts --> TypeScript types for NativeWind
+
+---
+
+## Example Screen (NativeWind Test)
+
+```tsx
+import { View, Text } from "react-native";
+
+export default function HomeScreen() {
+  return (
+    <View className="flex-1 items-center justify-center bg-white dark:bg-black">
+      <Text className="text-2xl font-bold text-blue-500">
+        Hello from NativeWind!
+      </Text>
+      <Text className="mt-4 text-lg text-gray-600 dark:text-gray-300">
+        Tailwind styles are working
+      </Text>
+    </View>
+  );
+}
+```
+
+---
+
+## Using this as a template for your own project
+
+This repository can be used as a GitHub template. To create your own project based on this template, follow these steps.
+
+### 1) Mark this repo as a template (only if you are the owner)
+
+1. Go to your repository on GitHub.
+2. Click Settings.
+3. Scroll to the Template repository section.
+4. Check "Template repository".
+
+Once marked as a template, others will see the "Use this template" button at the top of the repo.
+
+### 2) Create your own repo from the template
+
+1. On GitHub, click the green "Use this template" button at the top of this repo.
+2. Choose a repository name (for example, myfinanceapp) and create it under your account.
+
+### 3) Clone your new repository
+
+```bash
+git clone https://github.com/<your-username>/myfinanceapp.git
+cd myfinanceapp
+```
+
+### 4) Update app.json
+
+Update only these fields:
+
+```json
+{
+  "expo": {
+    "name": "myfinanceapp",
+    "slug": "myfinanceapp",
+    "scheme": "myfinanceapp"
+  }
+}
+```
+
+- name --> Human-readable app name (shown under the icon in Expo Go)
+- slug --> Short identifier used by Expo internally
+- scheme --> Deep link scheme (for example, myfinanceapp://)
+
+### 5) Update package.json
+
+Change the project name:
+
+```json
+{
+  "name": "myfinanceapp"
+}
+```
+
+### 6) Optional: Add iOS and Android identifiers for store builds
+
+```json
+{
+  "expo": {
+    "ios": { "bundleIdentifier": "com.mycompany.myfinanceapp" },
+    "android": { "package": "com.mycompany.myfinanceapp" }
+  }
+}
+```
+
+### 7) Clear caches and restart
+
+```bash
+rm -rf node_modules
+npm install
+npx expo start -c
+```
+
+Your project has now been created from the template and configured under the new name.
+
+---
+
+# Expo Original README (for reference)
+
+This is an Expo project created with create-expo-app.
+
+## Get started
+
+1. Install dependencies
 
    ```bash
-   expo init my-app --template @sign365/expo-nativewind-template
+   npm install
    ```
 
-3. Navigate to your project directory:
-
+2. Start the app
    ```bash
-   cd my-app
+   npx expo start
    ```
 
-4. Start your development server:
+In the output, you will find options to open the app in a
 
-   ```bash
-   expo start
-   ```
+- development build
+- Android emulator
+- iOS simulator
+- Expo Go, a limited sandbox for trying out app development with Expo
 
-### Project Structure
+## Get a fresh project
 
-The project structure follows a typical React Native layout, with additional configuration for Tailwind CSS and Expo-Router. You can find the core project files and directories in the `src` folder.
+When you are ready, run:
 
-### Customization
+```bash
+npm run reset-project
+```
 
-Feel free to customize the template to suit your specific project requirements. You can modify styling, add components, and expand your app's functionality as needed. The included Tailwind CSS setup and Expo-Router integration provide a strong foundation for building a polished mobile and web application.
+This command will move the starter code to the app-example directory and create a blank app directory where you can start developing.
 
-### Documentation
+## Learn more
 
-For more information on using Tailwind CSS, Expo-Router, or Expo in general, please refer to their official documentation:
+- Expo documentation: https://docs.expo.dev
+- Learn Expo tutorial: https://docs.expo.dev/tutorial/introduction
 
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [Expo Documentation](https://docs.expo.dev/)
-- [Expo-Router Documentation](https://reactrouter.com/native)
+## Join the community
 
-### Feedback and Contributions
-
-We welcome feedback and contributions from the community. If you have suggestions for improvements or run into any issues with this template, please don't hesitate to open an issue or submit a pull request on our GitHub repository.
-
-### Sponsors
-- [Sign365](www.sign365.com.au)
-- [XAM Consulting](https://xam.com.au/)
-
-Anyone who wishes to sponsor this package. Just let me know and I will add you on
-
-### License
-
-This template is open-source and available under the [MIT License](LICENSE). You are free to use, modify, and distribute it as per the terms of the license.
-
-Happy coding with Expo NativeWind Template!
+- Expo on GitHub: https://github.com/expo/expo
+- Discord community: https://chat.expo.dev
